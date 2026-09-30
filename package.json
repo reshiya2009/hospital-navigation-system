@@ -1,0 +1,19 @@
+{
+  "name": "iris-hospital-navigation",
+  "version": "1.0.0",
+  "description": "AI Hospital Navigation & Administrative Assistance Agent",
+  "scripts": {
+    "start": "node server/server.js",
+    "dev": "node server/server.js",
+    "install:server": "npm --prefix server install"
+  },
+  "keywords": [
+    "hospital-navigation",
+    "indoor-mapping",
+    "ai-assistant",
+    "healthcare",
+    "nhsrc-blueprint"
+  ],
+  "author": "",
+  "license": "ISC"
+}

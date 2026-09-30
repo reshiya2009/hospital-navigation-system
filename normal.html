@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Hospital Navigation</title>
+
+    <style>
+        /* The whole page */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f9fc;
+            color: #333;
+        }
+
+        /* Top navigation bar */
+        nav {
+            background-color: #087f8c;
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav h2 {
+            margin: 0;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+        }
+
+        /* Main welcome section */
+        .hero {
+            text-align: center;
+            padding: 70px 20px;
+            background-color: #dff6f8;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            color: #087f8c;
+        }
+
+        .hero p {
+            font-size: 20px;
+        }
+
+        /* Search box */
+        .search-box {
+            margin-top: 30px;
+        }
+
+        .search-box input {
+            width: 60%;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        .search-box button {
+            padding: 15px 25px;
+            background-color: #087f8c;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        /* Cards */
+        .services {
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .cards {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background-color: white;
+            width: 200px;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .card h3 {
+            color: #087f8c;
+        }
+
+        .card button {
+            background-color: #087f8c;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        /* Emergency section */
+        .emergency {
+            text-align: center;
+            padding: 40px;
+            background-color: #ffe5e5;
+        }
+
+        .emergency h2 {
+            color: #d62828;
+        }
+
+        .emergency button {
+            background-color: #d62828;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #087f8c;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* Mobile phone */
+        @media (max-width: 600px) {
+            nav {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .hero h1 {
+                font-size: 30px;
+            }
+
+            .search-box input {
+                width: 80%;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <h2>🏥 MediCare Hospital</h2>
+
+        <div>
+            <a href="#">Home</a>
+            <a href="#">Map</a>
+            <a href="#">Doctors</a>
+            <a href="#">Departments</a>
+        </div>
+    </nav>
+
+
+    <!-- Welcome section -->
+    <section class="hero">
+
+        <h1>🏥 Hospital Navigation</h1>
+
+        <p>
+            Find departments, doctors and facilities inside the hospital.
+        </p>
+
+        <div class="search-box">
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search department, doctor or room..."
+            >
+
+            <button onclick="searchHospital()">
+                🔎 Search
+            </button>
+
+        </div>
+
+        <p id="searchResult"></p>
+
+    </section>
+
+
+    <!-- Services -->
+    <section class="services">
+
+        <h2>How Can We Help You?</h2>
+
+        <div class="cards">
+
+            <div class="card">
+                <h3>🗺️ Hospital Map</h3>
+                <p>Find your way around the hospital.</p>
+                <button onclick="showMessage('Hospital Map')">
+                    Open Map
+                </button>
+            </div>
+
+
+            <div class="card">
+                <h3>🏥 Departments</h3>
+                <p>Find the department you need.</p>
+                <button onclick="showMessage('Departments')">
+                    View Departments
+                </button>
+            </div>
+
+
+            <div class="card">
+                <h3>👨‍⚕️ Doctors</h3>
+                <p>Find doctors and their rooms.</p>
+                <button onclick="showMessage('Doctors')">
+                    Find Doctor
+                </button>
+            </div>
+
+
+            <div class="card">
+                <h3>💊 Pharmacy</h3>
+                <p>Find the hospital pharmacy.</p>
+                <button onclick="showMessage('Pharmacy')">
+                    Find Pharmacy
+                </button>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Emergency -->
+    <section class="emergency">
+
+        <h2>🚨 Emergency</h2>
+
+        <p>
+            Need to find the Emergency Department?
+        </p>
+
+        <button onclick="emergencyMessage()">
+            Find Emergency
+        </button>
+
+        <p id="emergencyResult"></p>
+
+    </section>
+
+
+    <!-- Footer -->
+    <footer>
+
+        <p>© 2026 MediCare Hospital</p>
+
+        <p>
+            📞 Contact: 040-12345678 |
+            📧 info@medicare.com
+        </p>
+
+    </footer>
+
+
+    <!-- JavaScript -->
+    <script>
+
+        function searchHospital() {
+
+            let searchText =
+                document.getElementById("searchInput").value;
+
+            if (searchText === "") {
+
+                document.getElementById("searchResult").innerText =
+                    "Please type something to search.";
+
+            } else {
+
+                document.getElementById("searchResult").innerText =
+                    "🔎 Searching for: " + searchText;
+
+            }
+        }
+
+
+        function showMessage(place) {
+
+            alert(
+                "You selected: " + place +
+                "\n\nNavigation feature will be added next!"
+            );
+
+        }
+
+
+        function emergencyMessage() {
+
+            document.getElementById("emergencyResult").innerText =
+                "🚨 Emergency Department → Ground Floor → Room 101";
+
+        }
+
+    </script>
+
+</body>
+
+</html>
